@@ -16,7 +16,11 @@ def extract_input(input_line):
         'status_code': 0,
         'file_size': 0,
     }
-    log_format = '{}\\-{}{}{}{}\\s*'.format(log_pattern[0], log_pattern[1], log_pattern[2], log_pattern[3], log_pattern[4])
+    log_format = '{}\\-{}{}{}{}\\s*'.format(log_pattern[0],
+                                            log_pattern[1],
+                                            log_pattern[2],
+                                            log_pattern[3],
+                                            log_pattern[4])
     match = re.fullmatch(log_format, input_line)
     if match is not None:
         status_code = match.group('status_code')
