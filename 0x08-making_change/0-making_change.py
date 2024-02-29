@@ -3,15 +3,16 @@
 
 
 def makeChange(coins, total):
-    """Defines the make change prototype"""
     if total <= 0:
         return 0
 
-    coins.sort()
-    dp = [0] + [float('inf')] * total
-
+    dp = [float('inf')] * (total + 1)
+    dp[0] = 0
     for coin in coins:
         for i in range(coin, total + 1):
             dp[i] = min(dp[i], dp[i - coin] + 1)
 
-    return dp[total] if dp[total] != float('inf') else -1
+    if dp[total] == float('inf'):
+        return -1
+
+    return dp[total]
